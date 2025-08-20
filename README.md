@@ -40,4 +40,40 @@
     - `Splitting`: The clean data was split into training and validation sets with a 70:30 ratio to support robust model evaluation.
     - `Train/validation split`: 70:30 random split (196 training, 84 validation samples).
     - Only three label types (`ingredient`, `unit`, `quantity`) were present—no other entities
+  - **Model Setup:** Instantiated CRF with the following parameters:
+    - Algorithm: 'lbfgs' (efficient for medium-sized data).
+    - Regularization parameters: c1 and c2 set based on grid search or default values to control overfitting.
+    - Maximum iterations: Typically set high (e.g., 100) for convergence.
+  - **Model Training:** The CRF was trained using feature-extracted token sequences and corresponding label sequences from the training set.
+  -	**Evaluation metrics**:
+    - `Classification report`: High precision, recall, and F1-scores for all classes.
+    - `Confusion matrix`: To evaluate the performance of a classification algorithm - diagonal of the confusion matrix represents correctly predicted instances, and the off-diagonal elements show where the model has misclassified or "confused" the classes.
+  - **Final Results:**
+    - `Training accuracy`: `99.03%`
+    - `Validation accuracy`: Slightly below training, showing good generalization – `98.02%`
+
+## Conclusions:
+The CRF-based Named Entity Recognition model trained on the provided recipe data effectively extracts structured entities — `quantities`, `units`, and `ingredients` — enabling the transformation of informal ingredient lists into structured data. The detailed feature engineering and handling of class imbalance were crucial in achieving high accuracy and generalization.
+
+## Technologies Used
+- **python** - 3.13.1
+- **numpy** - 2.2.1
+- **pandas** - 2.2.3
+- **matplotlib** - 3.10.0
+- **seaborn** - 0.13.2
+- **statsmodels** - 0.14.4
+- **sklearn** - 1.6.1
+- **keras** - 3.8.0
+- **PIL** - 11.1.0
+- **tensorflow** - 2.18.0
+- **sklearn_crfsuite** - 0.5.0
+
+## Acknowledgements
+
+- This project was inspired by Upgrad IIIT Bangalore PG program on ML and AI.
+- This project was based on Syntactic Processing
+
+
+## Contact
+Created by @[GVChalamaReddy](https://github.com/GVChalamaReddy)- feel free to contact me!
     
