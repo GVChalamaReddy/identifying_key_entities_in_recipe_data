@@ -41,7 +41,7 @@
     - `Train/validation split`: 70:30 random split (196 training, 84 validation samples).
     - Only three label types (`ingredient`, `unit`, `quantity`) were present—no other entities
   - **Model Setup:** Instantiated CRF with the following parameters:
-    - Algorithm: 'lbfgs' (efficient for medium-sized data).
+    - Algorithm: `lbfgs` (efficient for medium-sized data).
     - Regularization parameters: c1 and c2 set based on grid search or default values to control overfitting.
     - Maximum iterations: Typically set high (e.g., 100) for convergence.
   - **Model Training:** The CRF was trained using feature-extracted token sequences and corresponding label sequences from the training set.
