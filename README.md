@@ -24,3 +24,20 @@
     - Keywords and patterns to robustly recognize units (e.g., "cup", "kg") and quantities (including fractions and numbers).
     - Context: previous/next token features, BOS/EOS flags.
   - `Model Chosen`: Model build using Conditional Random Field (CRF).CRFs are ideal for sequence labelling, capturing dependencies between neighbouring tags and effectively utilizing hand-crafted contextual features, especially important in structured, ordered lists such as recipe ingredients.
+
+  ### Techniques:
+  - **Data Preparation:**
+    - `Loading`: The recipe data was ingested from a structured JSON file containing two key fields: a raw ingredient string (input) and its corresponding entity label sequence (pos).
+    - `Structuring`: Tokenized both ingredient (input) lines and POS/NER labels (pos) for each word in the ingredient strings.
+    - `Unique Labels`: The only present entity labels are ingredient, quantity, and unit, confirming the narrow focus of the NER task.
+    - `Assumptions`:
+      - Only these three entity types are relevant and sufficient for the extraction task.
+      - The small number of dropped rows does not meaningfully bias the data.
+  - **Data Manipulation & Insights:**
+    - `Validation`: Added new columns to validate that the number of tokens matches the number of labels. Verified and dropped mismatches to ensure every token match a label.
+    - `Tokenization`: All recipes are now fully aligned: every word has a corresponding label.
+  - **Data Splitting:**
+    - `Splitting`: The clean data was split into training and validation sets with a 70:30 ratio to support robust model evaluation.
+    - `Train/validation split`: 70:30 random split (196 training, 84 validation samples).
+    - Only three label types (`ingredient`, `unit`, `quantity`) were present—no other entities
+    
