@@ -19,8 +19,8 @@
   - `pos`: Represents the corresponding part-of-speech (POS) tags or NER labels, identifying quantities, ingredients, and units.
 
   ### Approach:
-  - Extracted a rich set of lexical, numeric, and contextual features for each token, e.g.:
-    a. Lowercase form, lemma, part-of-speech tags, numeric checks, and punctuation presence.
-    b. Keywords and patterns to robustly recognize units (e.g., "cup", "kg") and quantities (including fractions and numbers).
-    c. Context: previous/next token features, BOS/EOS flags.
-  - Model Chosen: Model build using Conditional Random Field (CRF).CRFs are ideal for sequence labelling, capturing dependencies between neighbouring tags and effectively utilizing hand-crafted contextual features, especially important in structured, ordered lists such as recipe ingredients.
+  - Extracted a rich set of `lexical`, `numeric`, and `contextual` features for each token, e.g.:
+    - Lowercase form, lemma, part-of-speech tags, numeric checks, and punctuation presence.
+    - Keywords and patterns to robustly recognize units (e.g., "cup", "kg") and quantities (including fractions and numbers).
+    - Context: previous/next token features, BOS/EOS flags.
+  - `Model Chosen`: Model build using Conditional Random Field (CRF).CRFs are ideal for sequence labelling, capturing dependencies between neighbouring tags and effectively utilizing hand-crafted contextual features, especially important in structured, ordered lists such as recipe ingredients.
